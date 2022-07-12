@@ -8,36 +8,43 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
-
+import com.squareup.picasso.Picasso
+import dev.christine.contactlist.databinding.ContactListItemBinding
 
 
 class ContactRvAdapter(var contactList:List<Contact>):
-    RecyclerView.Adapter<TwitterViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TwitterViewHolder {
-       var itemView  = LayoutInflater.from(parent.context)
-           .inflate(R.layout.contact_list_item,parent,false)
-        return TwitterViewHolder(itemView)
+    RecyclerView.Adapter<ContactRvAdapter.ContactViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
+        var binding =
+            ContactListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-   }
+        return ContactViewHolder(binding)
 
-    override fun onBindViewHolder(holder: TwitterViewHolder, position: Int) {
-        var currentTwitter =contactList.get(position)
-       holder.tvName.text = currentTwitter.Name
-        holder.tvEmail.text = currentTwitter.Email
-       holder.tvAddress.text= currentTwitter.Address
-       holder.tvNumber.text = currentTwitter.Number}
-    override fun getItemCount(): Int {
-      return contactList.size
-  }
-}
+    }
+
+    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
+        var currentContact = contactList.get(position)
+        with(holder.binding) {
+            tvName.text = currentContact.Name
+            tvEmail.text = currentContact.Email
+            tvAddress.text = currentContact.Address
+            tvNumber.text =currentContact.Number
+            Picasso.get()
+                .load(currentContact.Person)
+//                .resize(300,300)
+//                .centerCrop()
+//                .placeholder(R.drawable.)
+//                .error(R.drawable.ic_launcher_background)
+                .into(imgPerson)
+        }
+    }
+        override fun getItemCount(): Int {
+            return contactList.size
+        }
 
 
-class TwitterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-   var tvName = itemView.findViewById<TextView>(R.id.tvName)
-    var tvEmail = itemView.findViewById<TextView>(R.id.tvEmail)
-    var tvAddress= itemView.findViewById<TextView>(R.id.tvAddress)
-    var imgPerson= itemView.findViewById<ImageView>(R.id.imgPerson)
-    var tvNumber= itemView.findViewById<TextView>(R.id.tvNumber)
 
-}
+
+class ContactViewHolder(var binding: ContactListItemBinding): RecyclerView.ViewHolder(binding.root){
+
+}}
