@@ -15,7 +15,7 @@
             android:name=".ViewContactActivity"
             android:exported="false" />
         <activity
-            android:name=".ContactRvAdapter"
+            android:name="ContactRvAdapter"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

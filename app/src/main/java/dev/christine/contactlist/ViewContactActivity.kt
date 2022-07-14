@@ -15,22 +15,28 @@ class ViewContactActivity : AppCompatActivity() {
         setContentView(binding.root)
         getExtras()
     }
-    fun getExtras(){
+
+    fun getExtras() {
         val extras = intent.extras
-        var name = extras?.getString("NAME","")
-        var Pn = extras?.getString("NUMBER","")
-        var mobile = extras?.getString("MOBILE","")
-        var Contactinfo = extras?.getString("Info","")
-        var person = extras?.getString("PERSON","")
+        var name = extras?.getString("NAME")
+        var phoneNumber = extras?.getString("NUMBER")
+     //   var mobile = extras?.getString("MOBILE")
+        var contactInfo = extras?.getString("EMAIL")
+        var person = extras?.getString("PERSON")
+        var address = extras?.getString("ADDRESS")
+
 
         Toast
-            .makeText(this,name,Toast.LENGTH_LONG).show()
-        Toast.makeText(this,Pn,Toast.LENGTH_SHORT).show()
+            .makeText(this, name, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, phoneNumber, Toast.LENGTH_LONG).show()
         binding.tvNme.text = name
-       // binding.tvPn.text = Pn
-        binding.tvMobile.text = mobile
-        binding.tvContactinfo.text = Contactinfo
-        Picasso.get().load(intent.getStringExtra("IMAGE"))//.into(image
+        binding.tvphoneNumber.text = phoneNumber
+        //binding.tvMobile.text = mobile
+        binding.tvContactinfo.text = contactInfo
+      //  binding.imgCall.tag =
+      //  binding.imgCalls.tag =
+        Picasso.get()
+            .load(intent.getStringExtra("PERSON")).into(binding.imgPsn)
 
     }
 }

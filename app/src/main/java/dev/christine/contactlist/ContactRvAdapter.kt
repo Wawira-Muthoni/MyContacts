@@ -51,10 +51,10 @@ class ContactRvAdapter(var contactList:List<Contact>):
 
                 context.startActivity(intent)
             }
-//            holder.binding.cvContact.setOnClickListener {
-//                Toast
-//                    .makeText(context,"You have clicked on my face",Toast.LENGTH_LONG)
-//                    .show()
+//         holder.binding.cvContact.setOnClickListener {
+//              Toast
+//                 .makeText(context,"You have clicked on my face",Toast.LENGTH_LONG)
+//                  .show()
 //            }
         }
     }
@@ -62,9 +62,6 @@ class ContactRvAdapter(var contactList:List<Contact>):
             return contactList.size
         }
 
-
-
-
-class ContactViewHolder(var binding: ContactListItemBinding): RecyclerView.ViewHolder(binding.root){
+    class ContactViewHolder(var binding: ContactListItemBinding): RecyclerView.ViewHolder(binding.root){
 
 }}
